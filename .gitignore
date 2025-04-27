@@ -1,0 +1,64 @@
+# --- General ---
+.DS_Store
+*.log
+*.sqlite3
+*.env
+.env.*
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.db
+.vscode/
+.idea/
+*.bak
+*.swp
+
+# --- Python (backend) ---
+venv/
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/.coverage
+backend/htmlcov/
+
+# --- Node.js/React (frontend) ---
+frontend/node_modules/
+frontend/.npm/
+frontend/.yarn/
+frontend/.turbo/
+frontend/.cache/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.*
+
+# --- FastAPI Uvicorn cache ---
+backend/app/.migrations/
+backend/app/.cache/
+
+# --- Coverage and Testing ---
+coverage.xml
+coverage/
+.testenv/
+pytest_cache/
+
+# --- ChromaDB ---
+chroma_db/
+
+# --- Extras ---
+*.iml
+*.tmp
+*.pid
+*.gz
+*.zip
+*.tar
+*.rar
+
+# --- Local backups ---
+*~
+*.orig
