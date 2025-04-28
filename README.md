@@ -8,7 +8,7 @@ Built with **FastAPI**, **React**, and **GPT-4o**.
 ## 📚 Overview
 
 This application implements a multi-agent reasoning system:
-- **VisorBot 👁️📈**: analyzes financial charts uploaded as images.
+- **VisorBot 👁️📈**: analyzes financial charts uploaded as images and creates images.
 - **BrainBroker 🧠💬**: reasons and answers financial questions based on the chart analysis and the user's input.
 
 The system combines both reasoning stages to provide a detailed final answer, leveraging the advanced capabilities of OpenAI's `gpt-4o` model.
@@ -75,7 +75,20 @@ npm install
 # Run the front end server
 npm run dev
 ```
-
+### Videos 📸
 Note: Make sure you have Node.js v20.x and npm v9.x or higher installed.
+
+Chatting about finances: 
+
+https://github.com/user-attachments/assets/61dacbfe-74a8-4ff0-9ea2-3994967623ba
+
+Loading image:
+
+https://github.com/user-attachments/assets/c6635788-a2fd-4621-84a4-4ff5654fce51
+
+Creating Image:
+
+https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
+
 
 
