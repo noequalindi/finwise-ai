@@ -16,9 +16,12 @@ class AgentManager:
         tokens_input = 0
 
         image_keywords = ["crear imagen", "generar imagen", "crear grafico", "crear una imagen", "generar una foto", "crear un grafico"]
+
         if not image_bytes and any(keyword in question.lower() for keyword in image_keywords):
             image_prompt = "Generar una imagen en base a esta descripcion: " + question
             image_url = await self.text_to_image_agent.generate_image(image_prompt)
+
+            tokens_input = count_tokens(question)  
 
             return QuestionResponse(
                 response=image_url,

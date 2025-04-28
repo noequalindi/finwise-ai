@@ -5,7 +5,7 @@ client = OpenAI()
 
 class TextToImageAgent:
     def __init__(self):
-        self.model = "gpt-4o"  # O el modelo que prefieras
+        self.model = "gpt-4o"  
 
     async def generate_image(self, prompt: str) -> str:
         """
@@ -17,9 +17,8 @@ class TextToImageAgent:
 
         response = client.images.generate(prompt=truncated_prompt,
         n=1,
-        size="1024x1024",  
+        size="512x512",  
         response_format="url")
-
-        # Obtener la URL de la imagen generada
+ 
         image_url = response.data[0].url
         return image_url
