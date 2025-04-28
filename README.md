@@ -95,9 +95,13 @@ Creating Image:
 
 https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
 
-### Architecture of LLM Agents
+### Architecture of LLM Agents and App
 
-![image](https://github.com/user-attachments/assets/021148b6-e2da-436f-b682-ae6d587fb9eb)
+<a href="https://github.com/user-attachments/assets/021148b6-e2da-436f-b682-ae6d587fb9eb">
+  <img src="https://github.com/user-attachments/assets/021148b6-e2da-436f-b682-ae6d587fb9eb" width="300" />
+</a>
+
+
 
 
 
