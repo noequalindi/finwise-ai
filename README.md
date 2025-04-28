@@ -78,8 +78,10 @@ npm install
 # Run the front end server
 npm run dev
 ```
-### Videos 📸
 Note: Make sure you have Node.js v20.x and npm v9.x or higher installed.
+
+## Videos 📸
+[Link to google drive](https://drive.google.com/drive/folders/1c0z_Y9Xgi7dF6Q4MJia6dIgm6RgNLxHN?usp=sharing)
 
 Chatting about finances: 
 
@@ -92,6 +94,11 @@ https://github.com/user-attachments/assets/c6635788-a2fd-4621-84a4-4ff5654fce51
 Creating Image:
 
 https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
+
+### Architecture of LLM Agents
+
+![image](https://github.com/user-attachments/assets/021148b6-e2da-436f-b682-ae6d587fb9eb)
+
 
 
 
