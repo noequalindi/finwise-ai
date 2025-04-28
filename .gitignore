@@ -3,7 +3,7 @@
 *.log
 *.sqlite3
 *.env
-.env.*
+
 __pycache__/
 *.py[cod]
 *.so
@@ -35,7 +35,6 @@ frontend/.cache/
 frontend/dist/
 frontend/build/
 frontend/.env
-frontend/.env.*
 
 # --- FastAPI Uvicorn cache ---
 backend/app/.migrations/
