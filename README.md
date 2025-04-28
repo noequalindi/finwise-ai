@@ -104,3 +104,8 @@ https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
 </a>
 
 ![diagram-app](https://github.com/user-attachments/assets/a6f7d4ff-9acd-478b-adea-4327d2e52b7c)
+
+-----------------
+## Trabajo Práctico final para la materia LLM II - Maestría en Inteligencia Artificial | FIUBA
+[Consigna](https://github.com/FIUBA-Posgrado-Inteligencia-Artificial/CEIA-LLMIAG/blob/main/ClaseVIII/LLMs%20y%20GEN%20IA%20-%20Clase%208.pdf)
+Docentes: Ezequiel Guinsburg y Abraham Rodriguez
