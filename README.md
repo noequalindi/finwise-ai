@@ -17,6 +17,9 @@ It features a **chat-style frontend** displaying the conversation flow, the part
 
 ---
 
+<img width="1432" alt="image" src="https://github.com/user-attachments/assets/16121b80-da77-4b51-ba61-a839d4efa5f7" />
+
+
 ## 🛠️ Technologies Used
 
 - **Backend**: FastAPI + Uvicorn
