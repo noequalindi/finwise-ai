@@ -15,7 +15,12 @@ export default function App() {
   useEffect(() => {
     const storedName = localStorage.getItem("finwise_user_name");
     const storedMessages = localStorage.getItem("finwise_messages");
-
+  
+    if (storedName) setUserName(storedName);
+    if (storedMessages) {
+      const parsedMessages = JSON.parse(storedMessages);
+      setMessages(parsedMessages);
+    }
     if (storedName) setUserName(storedName);
     if (storedMessages) {
       const parsedMessages = JSON.parse(storedMessages);
@@ -32,16 +37,20 @@ export default function App() {
       newMessages.push({ role: "VisionArg", content: data.vision_analysis });
     }
   
-    if (data.response && data.response.includes("https://")) {
+    if (data.response && data.response.includes("https://") && !imageUploaded) {
       newMessages.push({
         role: "VisionArg", 
         content: data.response 
       });
+
+      clearChatHistory();
+      window.location.reload();
     } 
 
     if(data.response && !data.response.includes("https://")) {
       newMessages.push({ role: "TextArg", content: data.response });
     }
+
     setMessages((prev) => {
       const updatedMessages = [...prev, ...newMessages];
       localStorage.setItem("finwise_messages", JSON.stringify(updatedMessages));
@@ -78,6 +87,7 @@ export default function App() {
   const handleConfirmClear = () => {
     clearChatHistory();
     setShowConfirmModal(false);
+    window.location.reload(); 
   };
 
   const handleCancelClear = () => {

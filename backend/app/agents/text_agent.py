@@ -9,6 +9,7 @@ class TextAgent:
         """
         Envía solo el texto combinado (análisis visión + pregunta original) a GPT-4o.
         """
+        
         response = openai.chat.completions.create(
             model=self.model,
             messages=[
@@ -16,7 +17,7 @@ class TextAgent:
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=1200,
+            max_tokens=10000,
         )
 
         message = response.choices[0].message.content

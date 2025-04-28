@@ -4,7 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.agents.agent_manager import AgentManager
 from app.models.request_response import QuestionResponse
 import uvicorn
+from dotenv import load_dotenv
+import os
+import openai
 
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+print(f"OpenAI API Key: {openai.api_key}")
 app = FastAPI(
     title="Razonamiento Avanzado API",
     description="API para resolver preguntas complejas usando razonamiento de texto e imagen (criptoanálisis).",
@@ -23,7 +31,6 @@ app.add_middleware(
 # Agent manager instance
 agent_manager = AgentManager()
 
-@app.post("/ask", response_model=QuestionResponse)
 @app.post("/ask", response_model=QuestionResponse)
 async def ask_question(
     prompt: str = Form(...),  # Recibir el prompt concatenado

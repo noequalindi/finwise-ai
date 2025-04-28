@@ -76,6 +76,7 @@ export default function ChatDisplay({ messages, userName }) {
                   </div>
                 ) : (
                   <>
+                  {msg.role === "TextArg" && (
                     <div className="fade-in transition-opacity duration-700">
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
@@ -83,10 +84,10 @@ export default function ChatDisplay({ messages, userName }) {
                       >
                         {content}
                       </ReactMarkdown>
-                    </div>
+                    </div>)}
 
 
-                    {msg.content?.includes("https") && (
+                    {msg.role === "VisionArg" && msg.content?.includes("https") && (
                       <div className="image-preview-container">
                         <p className="image-caption">
                           Acá está la imagen generada:

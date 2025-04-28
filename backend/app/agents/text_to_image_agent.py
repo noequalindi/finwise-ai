@@ -1,5 +1,6 @@
 from openai import OpenAI
 
+
 client = OpenAI()
 
 class TextToImageAgent:
@@ -11,7 +12,10 @@ class TextToImageAgent:
         Generates an image based on a textual prompt using OpenAI API.
         Returns the URL to the generated image.
         """
-        response = client.images.generate(prompt=prompt,
+        
+        truncated_prompt = prompt[:2000]
+
+        response = client.images.generate(prompt=truncated_prompt,
         n=1,
         size="1024x1024",  
         response_format="url")

@@ -32,7 +32,7 @@ class VisionAgent:
                 }
             ],
             temperature=0.2,
-            max_tokens=600,
+            max_tokens=5000,
         )
 
         vision_response = response.choices[0].message.content

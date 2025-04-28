@@ -57,6 +57,7 @@ export default function QuestionForm({ onResponse, userName }) {
     }
 
     try {
+  
       const data = await sendQuestion(formData); 
       const imageUploaded = !!image;
       onResponse(data, question, imageUploaded);
@@ -72,7 +73,7 @@ export default function QuestionForm({ onResponse, userName }) {
       setImagePreview(null);  
     } catch (error) {
       console.error("Error al enviar la pregunta:", error);
-      alert("Hubo un error al enviar la pregunta.");
+      alert("Hubo un error al enviar la pregunta. Superaste el límite de tokens? Borra el chat y volvé a intentarlo.");
     } finally {
       setLoading(false);
     }
