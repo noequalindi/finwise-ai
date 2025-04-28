@@ -22,15 +22,28 @@ It features a **chat-style frontend** displaying the conversation flow, the part
 - **Backend**: FastAPI + Uvicorn
 - **Frontend**: React + Vite + TailwindCSS
 - **OpenAI GPT-4o API**: for multimodal reasoning (text + image)
-- **ChromaDB** (optional for future memory management)
-- **react-markdown**: to render Markdown-formatted responses
-- **react-simple-typewriter**: typing animation effect
-
+- **ChromaDB**: (Planned for future memory management and retrieval optimization)
+- **react-markdown**: to render Markdown-formatted and LaTeX responses
 ---
 
 ## 🚀 Installation and Setup
 
-### 1. Backend (FastAPI)
+### 1. **Create a `.env` file**
+
+Before starting the application, create a `.env` file in both the **frontend** and **backend** directories and populate it with the appropriate API keys (refer to `.env.example` for required variables).
+
+### Run the App with Docker
+In the root of the project run:
+```bash
+# Build the docker containers
+docker-compose build
+
+docker-compose up
+```
+
+### Run the App locally 
+
+#### 1. Backend (FastAPI)
 
 ```bash
 # Navigate to the backend directory
@@ -46,3 +59,23 @@ pip install -r requirements.txt
 
 # Start the server
 uvicorn app.main:app --reload
+```
+Note: Make sure you have python 3.10 or higher installed.
+
+#### 2. Frontend (React + Vite)
+📦 Setup
+
+```bash
+# Navigate to the frontend directory
+cd frontend
+
+# Install frontend dependencies
+npm install
+
+# Run the front end server
+npm run dev
+```
+
+Note: Make sure you have Node.js v20.x and npm v9.x or higher installed.
+
+

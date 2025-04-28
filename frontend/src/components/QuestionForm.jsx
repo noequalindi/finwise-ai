@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { sendQuestion } from "../api/api";
+import { FiUploadCloud, FiSend } from "react-icons/fi";
 import Loader from "./Loader";
+import "../styles/chat.css";
 
-export default function QuestionForm({ onResponse }) {
+export default function QuestionForm({ onResponse, userName }) {
   const [question, setQuestion] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [conversationHistory, setConversationHistory] = useState([]); 
+
+  useEffect(() => {
+    const storedPreview = localStorage.getItem("imagePreview");
+    if (storedPreview) {
+      setImagePreview(storedPreview);
+    }
+
+    window.addEventListener("beforeunload", clearTempImage);
+    return () => window.removeEventListener("beforeunload", clearTempImage);
+  }, []);
+
+  const clearTempImage = () => {
+    localStorage.removeItem("imagePreview");
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -14,22 +31,45 @@ export default function QuestionForm({ onResponse }) {
       setImage(file);
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
+      localStorage.setItem("imagePreview", previewUrl);  
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!question.trim() && !image) return; 
+
     setLoading(true);
 
+    let prompt = `Nombre del usuario: ${userName}\n`;
+    
+    if (image && !question.trim()) {
+      prompt += "User: Image attached";
+    } else {
+      prompt += conversationHistory.concat([`User: ${question}`]).join("\n");
+    }
+
+    const formData = new FormData();
+    formData.append("prompt", prompt);  
+    if (image) {
+      formData.append("image", image); 
+    }
+
     try {
-      const data = await sendQuestion(question, image);
-      const imageUploaded = !!image; 
+      const data = await sendQuestion(formData); 
+      const imageUploaded = !!image;
       onResponse(data, question, imageUploaded);
 
+      setConversationHistory(prev => [
+        ...prev,
+        `User: ${question}`,
+        `GPT: ${data.response}`,
+      ]);
 
-      setQuestion("");
-      setImage(null);
-      setImagePreview(null);
+      setQuestion(""); 
+      setImage(null);  
+      setImagePreview(null);  
     } catch (error) {
       console.error("Error al enviar la pregunta:", error);
       alert("Hubo un error al enviar la pregunta.");
@@ -38,69 +78,72 @@ export default function QuestionForm({ onResponse }) {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   if (loading) {
     return (
-      <div className="flex flex-col items-center p-8 bg-white rounded shadow-md">
+      <div className="loader-container">
         <Loader />
-        <p className="mt-4 text-gray-600">Procesando tu pregunta...</p>
+        <p>Procesando tu pregunta...</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded shadow-md w-full max-w-2xl">
-      <div>
-        <label htmlFor="question" className="block text-sm font-medium text-gray-700">
-          Pregunta
-        </label>
-        <textarea
-          id="question"
-          rows="4"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Escribe tu pregunta aquí..."
-          required
-        />
-      </div>
+    <div className="w-full flex justify-center mt-8 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4 bg-white rounded-2xl shadow-xl p-6 w-full max-w-2xl"
+      >
+        <div className="chat-input-container">
+          <button
+            type="button"
+            className="attach-button"
+            onClick={() => document.getElementById("image").click()}
+          >
+            <FiUploadCloud size={22} />
+            <span className="upload-label-text">Subir Imagen</span>
+          </button>
 
-      <div>
-        <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-          Imagen (opcional)
-        </label>
+          <textarea
+            id="question"
+            rows="1"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="chat-textarea"
+            placeholder="Escribí tu mensaje..."
+            required={!image}  
+          />
+
+          <button type="submit" className="send-button">
+            <FiSend size={20} color="#fff" />
+          </button>
+        </div>
+
         <input
           id="image"
           type="file"
           accept="image/*"
           onChange={handleImageChange}
-          className="mt-1 block w-full text-sm text-gray-500
-            file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-indigo-50 file:text-indigo-700
-            hover:file:bg-indigo-100"
+          className="hidden-file-input"
         />
-      </div>
 
-      {imagePreview && (
-        <div className="mt-4">
-          <p className="text-sm text-gray-600 mb-2">Previsualización de la imagen:</p>
-          <img
-            src={imagePreview}
-            alt="Vista previa"
-            className="max-w-full h-auto rounded-md shadow-md"
-          />
-        </div>
-      )}
-
-      <div>
-        <button
-          type="submit"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          Enviar Pregunta
-        </button>
-      </div>
-    </form>
+        {imagePreview && (
+          <div className="image-preview-container">
+            <img
+              src={imagePreview}
+              alt="Vista previa"
+              className="image-preview"
+            />
+          </div>
+        )}
+      </form>
+    </div>
   );
-}
+} 

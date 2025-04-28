@@ -1,9 +1,6 @@
 import openai
 import os
 
-# Configurar API Key de OpenAI
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
 class TextAgent:
     def __init__(self):
         self.model = "gpt-4o"

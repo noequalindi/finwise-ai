@@ -1,0 +1,100 @@
+/* Modal Fade-in Animation */
+.modal-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Fondo del modal */
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro y semitransparente */
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contenedor del modal */
+  .modal-content {
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    z-index: 51; /* Aseguramos que el modal esté encima del fondo oscuro */
+  }
+  
+  /* Estilo para los botones del modal */
+  .modal-buttons button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  /* Botón de confirmación */
+  .modal-buttons .button-confirm {
+    background-color: #f87171;
+    color: white;
+    border: 1px solid transparent;
+  }
+  
+  .modal-buttons .button-confirm:hover {
+    background-color: #f43f5e;
+    cursor: pointer;
+  }
+  
+  .modal-buttons .button-confirm:active {
+    background-color: #e11d48;
+    transform: scale(0.98);
+  }
+  
+  /* Botón de cancelación */
+  .modal-buttons .button-cancel {
+    background-color: #d1d5db;
+    color: white;
+    border: 1px solid transparent;
+  }
+  
+  .modal-buttons .button-cancel:hover {
+    background-color: #9ca3af;
+    cursor: pointer;
+  }
+  
+  .modal-buttons .button-cancel:active {
+    background-color: #6b7280;
+    transform: scale(0.98);
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;
+  }
+  
+  .modal-buttons button {
+    width: 45%; 
+  }
+  

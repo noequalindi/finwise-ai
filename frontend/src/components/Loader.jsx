@@ -1,8 +1,11 @@
+import "../styles/loader.css";  
+
 export default function Loader() {
-    return (
-      <div className="flex justify-center items-center">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+  return (
+    <div className="w-full flex justify-center mt-6">
+      <div className="loader-bar-container">
+        <div className="loader-bar-progress"></div> 
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

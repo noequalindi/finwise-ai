@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .logo {
@@ -39,4 +40,33 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.token-summary-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  margin-top: 3rem;
+  padding: 10px;
+  height: 500px; 
+  width: 100%;
+  overflow-y: auto;
+  background-color: #f9fafb; 
+  border-radius: 12px; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+.token-summary-container .token-item {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #4b5563; 
+}
+
+.userName-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin: 50px 0;
 }

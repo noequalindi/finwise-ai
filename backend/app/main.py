@@ -11,35 +11,36 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# allow access CORS to frontend in React 
+# Allow access CORS to frontend in React
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# agent manager instance
+# Agent manager instance
 agent_manager = AgentManager()
 
 @app.post("/ask", response_model=QuestionResponse)
+@app.post("/ask", response_model=QuestionResponse)
 async def ask_question(
-    question: str = Form(...),
-    image: UploadFile = File(None)
+    prompt: str = Form(...),  # Recibir el prompt concatenado
+    image: UploadFile = File(None)  # Recibir la imagen si se envía
 ):
     """
-    Endpoint principal: recibe una pregunta (texto) y opcionalmente una imagen.
+    Endpoint principal: recibe un 'prompt' con la pregunta y el nombre del usuario, y opcionalmente una imagen.
     Devuelve la respuesta razonada y estadísticas de tokens.
     """
-    # checks the image 
     image_bytes = await image.read() if image else None
 
-    # process the question
-    result = await agent_manager.handle_request(question, image_bytes)
+    # No es necesario preprocesar el 'prompt' porque ya se procesó en el frontend
+    result = await agent_manager.handle_request(prompt, image_bytes)
 
-    return JSONResponse(content=result.dict())
+    return JSONResponse(content={"response": result.response, "tokens_input": result.tokens_input, "tokens_reasoning": result.tokens_reasoning, "tokens_output": result.tokens_output})
 
-# to run the app with uvicorn locally
+
+# Run the app with uvicorn locally
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)

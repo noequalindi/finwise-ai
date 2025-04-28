@@ -1,0 +1,49 @@
+/* Estilo para el contenedor de Token Summary */
+.token-summary-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 3rem 0 3rem 0;
+    padding-top: 1.5rem;
+    background-color: #242424; /* Color de fondo */
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Limitar el tamaño máximo del contenedor */
+    height: 200px;
+  }
+  
+  /* Estilo para el título dentro de Token Summary */
+  .token-summary-container h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fdfdfd;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+
+  .token-summary-container .token-item {
+    font-size: 1rem;
+    color: #fdfdfd;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .token-summary-container .token-item strong {
+    color: #6366f1; 
+  }
+  
+
+  .token-summary-container .token-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #ffff;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .token-summary-container .token-item p:last-child {
+    margin-bottom: 0; /* Eliminar margen en el último elemento */
+  }
+  
