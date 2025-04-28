@@ -28,30 +28,26 @@ export default function App() {
   
     newMessages.push({ role: "User", content: userQuestion });
   
-    // Si se ha subido una imagen, añadimos el análisis de la imagen.
     if (imageUploaded) {
       newMessages.push({ role: "VisionArg", content: data.vision_analysis });
     }
   
-    // Si la respuesta contiene una URL de imagen, la mostramos
-    if (data.response && data.response.includes("https")) {
+    if (data.response && data.response.includes("https://")) {
       newMessages.push({
         role: "VisionArg", 
-        content: data.response // Esta es la URL de la imagen generada
+        content: data.response 
       });
+    } 
+
+    if(data.response && !data.response.includes("https://")) {
+      newMessages.push({ role: "TextArg", content: data.response });
     }
-  
-    // Añadimos la respuesta de texto del modelo
-    newMessages.push({ role: "TextArg", content: data.response });
-  
-    // Actualizamos el estado con los nuevos mensajes
     setMessages((prev) => {
       const updatedMessages = [...prev, ...newMessages];
       localStorage.setItem("finwise_messages", JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   
-    // Actualizamos la información de los tokens
     setTokenInfo({
       tokens_input: data.tokens_input,
       tokens_reasoning: data.tokens_reasoning,
@@ -127,7 +123,6 @@ export default function App() {
             ¡Hola {userName}! ✨ ¿Listos para analizar finanzas?
           </div>
 
-          {/* Botón de borrar */}
           {messages.length > 0 && (
             <div className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 shadow-md">
               <button
@@ -151,7 +146,6 @@ export default function App() {
         </div>
       )}
 
-      {/* Modal Confirmación */}
       <Modal
         isOpen={showConfirmModal}
         onConfirm={handleConfirmClear}

@@ -65,7 +65,6 @@ export default function ChatDisplay({ messages, userName }) {
                   {isUser ? userName : roleLabels[msg.role] || msg.role}
                 </strong>
 
-                {/* Mostrar el contenido con Markdown */}
                 {isUser ? (
                   <div className="fade-in">
                     <ReactMarkdown

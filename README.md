@@ -12,7 +12,7 @@ This application implements a multi-agent reasoning system:
 - **BrainBroker 🧠💬**: reasons and answers financial questions based on the chart analysis and the user's input.
 
 The system combines both reasoning stages to provide a detailed final answer, leveraging the advanced capabilities of OpenAI's `gpt-4o` model.
-
+You can ask for create an image.
 It features a **chat-style frontend** displaying the conversation flow, the participating agents, and the analyzed images.
 
 ---

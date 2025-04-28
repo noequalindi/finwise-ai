@@ -10,5 +10,5 @@ class QuestionResponse(BaseModel):
     tokens_input: int
     tokens_reasoning: int
     tokens_output: int
-    image_bytes: Optional[str] = None  
+    image_url: Optional[str] = None  
 

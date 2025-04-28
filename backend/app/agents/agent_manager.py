@@ -8,19 +8,17 @@ class AgentManager:
     def __init__(self):
         self.text_agent = TextAgent()
         self.vision_agent = VisionAgent()
-        self.text_to_image_agent = TextToImageAgent()  # Agregar el agente para generar imágenes
+        self.text_to_image_agent = TextToImageAgent() 
 
     async def handle_request(self, question: str, image_bytes: bytes = None) -> QuestionResponse:
         reasoning_text = ""
         tokens_reasoning = 0
         tokens_input = 0
 
-        # Detectamos si el usuario quiere generar una imagen
         if "crear imagen" in question or "generar imagen" or "crear grafico" in question:
             image_prompt = "Generar una imagen en base a esta descripcion: " + question
             image_url = await self.text_to_image_agent.generate_image(image_prompt)
-            print("Creando imagen....")
-            print("Imagen generada:", image_url)
+
             return QuestionResponse(
                 response=image_url,
                 tokens_input=tokens_input,
@@ -42,7 +40,6 @@ class AgentManager:
                 tokens_output=0,
             )
 
-        # Si no hay imagen, procesamos la pregunta con el TextAgent
         tokens_input = count_tokens(question)
 
         combined_prompt = reasoning_text + question
