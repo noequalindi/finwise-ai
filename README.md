@@ -103,10 +103,4 @@ https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
   <img src="https://github.com/user-attachments/assets/021148b6-e2da-436f-b682-ae6d587fb9eb" width="300" />
 </a>
 
-
-![diagram](https://github.com/user-attachments/assets/e7da9f21-a49c-4022-969d-bc548d827657)
-
 ![diagram-app](https://github.com/user-attachments/assets/a6f7d4ff-9acd-478b-adea-4327d2e52b7c)
-
-
-
