@@ -19,6 +19,8 @@ It features a **chat-style frontend** displaying the conversation flow, the part
 
 <img width="1432" alt="image" src="https://github.com/user-attachments/assets/16121b80-da77-4b51-ba61-a839d4efa5f7" />
 
+https://github.com/user-attachments/assets/af0cdfd0-eee9-4154-ad1f-d6a50f1ed26b
+
 
 ## 🛠️ Technologies Used
 
@@ -102,7 +104,9 @@ https://github.com/user-attachments/assets/f0897ee0-0876-4f79-9bb6-066d1b50b95e
 </a>
 
 
+![diagram](https://github.com/user-attachments/assets/e7da9f21-a49c-4022-969d-bc548d827657)
 
+![diagram-app](https://github.com/user-attachments/assets/a6f7d4ff-9acd-478b-adea-4327d2e52b7c)
 
 
 
